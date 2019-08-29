@@ -1,0 +1,72 @@
+﻿@{
+}
+
+<h1><a href="/disavow">Disavow >></a></h1>
+
+
+@model IEnumerable<Disavow>
+@{
+    ViewData["Title"] = "Disavow Table";
+}
+
+<form id="form-disavow" method="POST">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped display" id="myTable" style="width:100%">
+            <thead class="thead-dark text-center">
+                <tr>
+                    <th><input name="select_all" value="1" type="checkbox" /></th>
+                    <th>Created Date</th>
+                    <th>Modified Date</th>
+                    <th>Link Domain</th>
+                    <th>Link Url</th>
+                    <th>Anchor Text</th>
+                    <th>Search Engine</th>
+                    <th>Notes</th>
+                    <th>Link Status</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            @*<tbody class="text-center">
+                @foreach (var item in Model)
+                {
+                    <tr id="@item.ID" class="disavow-row">
+                        <td></td>
+                        <td class="text-muted">
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+                        <td class="text-muted">
+                            @Html.DisplayFor(modelItem => item.ModifiedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LinkDomain)
+                        </td>
+                        <td class="text-info">
+                            @Html.DisplayFor(modelItem => item.LinkUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AnchorText)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SearchEngine)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Notes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LinkStatus)
+                        </td>
+                        <td>
+                            <a asp-controller="Disavows" asp-action="Edit" data-target="#modal-container" asp-route-id="@item.ID" data-toggle="modal" class="edit-post"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>*@
+        </table>
+    </div>
+</form>
+<div id="modal-container" class="modal fade hidden-print" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        </div><!--end modal content-->
+    </div><!--end modal dialog-->
+</div><!--end modal edit-->
