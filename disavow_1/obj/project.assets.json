@@ -12629,11 +12629,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\larry\\source\\repos\\disavow_1\\disavow_1.csproj",
+      "projectUniqueName": "C:\\GitHub\\VScrawler\\disavow_1\\disavow_1.csproj",
       "projectName": "disavow_1",
-      "projectPath": "C:\\Users\\larry\\source\\repos\\disavow_1\\disavow_1.csproj",
+      "projectPath": "C:\\GitHub\\VScrawler\\disavow_1\\disavow_1.csproj",
       "packagesPath": "C:\\Users\\larry\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\larry\\source\\repos\\disavow_1\\obj\\",
+      "outputPath": "C:\\GitHub\\VScrawler\\disavow_1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
