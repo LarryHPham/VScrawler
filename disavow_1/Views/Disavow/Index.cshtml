@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.NoFollowNoLink)
             </td>
             <td>
-                <button asp-action="Parse" asp-route-id="@item.Id">Parse</button>
+                <button asp-action="crawler" asp-route-id="@item.Id">Parse</button>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
