@@ -49,38 +49,122 @@ namespace disavow_1.Controllers
 
         private static async void GetHtmlAsync(string url, string search_pattern)
         {
-            var httpClient = new HttpClient();
-
+            var valid = false;
+            HttpClient httpClient = new HttpClient();
             var html = await httpClient.GetStringAsync(url);
 
-            var htmlDocument = new HtmlDocument();
+            HtmlDocument htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(html);
 
-            var htmlNodes = htmlDocument.DocumentNode
-                                .SelectNodes("//a");
-            foreach (var tnodes in htmlNodes)
-            {
-                var href = tnodes.GetAttributeValue("href", "");
-                if(IsValid(href, search_pattern))
-                {
-                    Console.WriteLine("Get list of pages from ahref.com");
-                    List<Pages> pages = GetThirdPartyAPI(href);
+            var metaNodes = htmlDocument.DocumentNode
+                                .SelectNodes("//meta");
 
-                    if (pages != null)
+            Console.WriteLine(metaNodes);
+            foreach (var mnodes in metaNodes)
+            {
+                var meta = mnodes.GetAttributeValue("name", "");
+                Console.WriteLine(meta);
+                if(meta == "robots")
+                {
+                    var content = mnodes.GetAttributeValue("content", "");
+                    content = content.ToLower();
+                    Console.WriteLine(content);
+                    if(IsValid(content, "nofollow"))
                     {
-                        Console.WriteLine("Change page rankings if below threshold then flag");
-                        foreach (Pages page in pages)
-                        {
-                            if(page.ahrefs_rank < 50)
-                            {
-                                Console.WriteLine($"\nsite:{page.url}");
-                                Console.WriteLine($"\nBAD RATING of {page.ahrefs_rank} need to flag as bad site");
-                            }
-                        }
+                        valid = true;
                     }
                 }
-
             }
+
+            // STEP:1 check if head meta tags has nofollow
+            // if no follow flag is set then this whole page is valid ignore rest of code
+            if (valid)
+            {
+                return;
+            }
+
+            Console.WriteLine($"\nGetThirdPartyAPI for site:{url}");
+
+            // STEP:2 Check if the url rating is above threshold (currently:50) whole page is valid if so
+            int threshold = 50;
+            List<Pages> pages = GetThirdPartyAPI(url);
+            if (pages.Any())
+            {
+                Console.WriteLine($"Check page rankings if below threshold [{threshold}] then flag");
+                foreach (Pages page in pages)
+                {
+                    if (page.ahrefs_rank > threshold)
+                    {
+                        Console.WriteLine($"PASS:{page.url} - RANK {page.ahrefs_rank}");
+                        valid = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"FAIL:{page.url} - RANK {page.ahrefs_rank}");
+                        Console.WriteLine($"BAD RATING possible bad site - run nofollowcheck");
+                    }
+                }
+            }
+            Console.WriteLine("\n");
+
+            if (valid)
+            {
+                return;
+            }
+
+            // STEP:3 Check if HtmlDocument nofollow is on the a:rel nodes
+            Boolean siteFlag = NoFollowCheck(htmlDocument, search_pattern);
+            Console.WriteLine($"siteFlag:{siteFlag}");
+
+        }
+
+        private static Boolean NoFollowCheck(HtmlDocument htmlDocument, string search_pattern)
+        {
+            HtmlNodeCollection htmlNodes = htmlDocument.DocumentNode
+                                .SelectNodes("//a");
+            foreach (HtmlNode tnodes in htmlNodes)
+            {
+                string href = tnodes.GetAttributeValue("href", "");
+                Console.WriteLine($"Checking: {href}");
+                // check if the regex pattern matches what we want to look for
+                if (IsValid(href, search_pattern))
+                {
+                    Console.WriteLine($"VALID Pattern - {href}[{search_pattern}] checking rel tag for nofollow");
+                    // check if the href has a rel tag for no follow and move of if it exists.
+                    string relTag = tnodes.GetAttributeValue("rel", "");
+                    relTag = relTag.ToLower();
+                    if (IsValid(relTag, "nofollow"))
+                    {
+                        Console.WriteLine($"SUCCESS:{href} - rel:nofollow EXISTS moving on\n");
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"FAIL:{href} - rel:nofollow does not exist NEED TO FLAG\n");
+                    }
+
+                    //Console.WriteLine("Get list of pages from ahref.com for ");
+                    //List<Pages> pages = GetThirdPartyAPI(href);
+
+                    //if (pages != null)
+                    //{
+                    //    Console.WriteLine("Change page rankings if below threshold then flag");
+                    //    foreach (Pages page in pages)
+                    //    {
+                    //        if (page.ahrefs_rank < 50)
+                    //        {
+                    //            Console.WriteLine($"\nsite:{page.url}");
+                    //            Console.WriteLine($"\nBAD RATING of {page.ahrefs_rank} need to flag as bad site");
+                    //        }
+                    //    }
+                    //}
+                }
+                else
+                {
+                    Console.WriteLine($"INVALID Pattern: {href} DOES NOT MATCH {search_pattern}.\n");
+                }
+            }
+            return false;
         }
 
         private static List<Pages> GetThirdPartyAPI(string url)
