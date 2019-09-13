@@ -5,7 +5,7 @@
 
 <h2>Upload</h2>
 
-<form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
+<form method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-md-4">
             <input type="file" name="files" class="form-control" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
@@ -14,10 +14,56 @@
     <div class="row">
         <div class="col-md-8" style="padding-top:10px;">
             <div class="col-md-10">
-                <input type="submit" value="Upload">
+                <input type="submit" value="Upload" id="btnUpload">
             </div>
         </div>
     </div>
     <br />
     <div id="dvData"></div>
 </form>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        $('#btnUpload').on('click', function(e) {
+            e.preventDefault();
+            var fileExtension = ['xls', 'xlsx'];
+            var filename = $('input[name="files"]').val();
+
+            if (filename.length == 0) {
+                alert("Please select a file.");
+                return false;
+            }
+            else {
+                var extension = filename.replace(/^.*\./, '');
+                if ($.inArray(extension, fileExtension) == -1) {
+                    alert("Please select only excel files.");
+                    return false;
+                }
+            }
+            var fdata = new FormData();
+            var fileUpload =  $('input[name="files"]').get(0);
+            console.log(fileUpload);
+            var files = fileUpload.files;
+            fdata.append(files[0].name, files[0]);
+            $.ajax({
+                type: "POST",
+                url: "/UploadFiles",
+                data: fdata,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+                    if (response.length == 0)
+                        alert('Some error occured while uploading');
+                    else {
+                        $('#dvData').html(response);
+                    }
+                },
+                error: function (e) {
+                    console.log(e);
+                    $('#dvData').html(e.responseText);
+                }
+            });
+        })
+    });
+</script>

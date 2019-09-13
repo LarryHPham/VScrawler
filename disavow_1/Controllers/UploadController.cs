@@ -35,6 +35,8 @@ namespace disavow_1.Controllers
             // full path to file in temp location
             var filePath = Path.GetTempFileName();
 
+            // TODO: some reason no files coming through
+            Console.WriteLine(files.Count());
 
             foreach (Models.IFormFile file in files)
             {
@@ -53,7 +55,6 @@ namespace disavow_1.Controllers
                 }
             }
 
-            Console.WriteLine(files.Count());
 
             return Ok(new { count = files.Count, size });
         }
