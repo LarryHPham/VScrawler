@@ -2,6 +2,7 @@
 }
 
 <h1><a href="/disavow">Disavow >></a></h1>
+<h1><a href="/upload">Upload >></a></h1>
 
 
 @model IEnumerable<Disavow>
@@ -27,40 +28,40 @@
                 </tr>
             </thead>
             @*<tbody class="text-center">
-                @foreach (var item in Model)
-                {
-                    <tr id="@item.ID" class="disavow-row">
-                        <td></td>
-                        <td class="text-muted">
-                            @Html.DisplayFor(modelItem => item.CreatedDate)
-                        </td>
-                        <td class="text-muted">
-                            @Html.DisplayFor(modelItem => item.ModifiedDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LinkDomain)
-                        </td>
-                        <td class="text-info">
-                            @Html.DisplayFor(modelItem => item.LinkUrl)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AnchorText)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SearchEngine)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Notes)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LinkStatus)
-                        </td>
-                        <td>
-                            <a asp-controller="Disavows" asp-action="Edit" data-target="#modal-container" asp-route-id="@item.ID" data-toggle="modal" class="edit-post"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                        </td>
-                    </tr>
-                }
-            </tbody>*@
+                    @foreach (var item in Model)
+                    {
+                        <tr id="@item.ID" class="disavow-row">
+                            <td></td>
+                            <td class="text-muted">
+                                @Html.DisplayFor(modelItem => item.CreatedDate)
+                            </td>
+                            <td class="text-muted">
+                                @Html.DisplayFor(modelItem => item.ModifiedDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LinkDomain)
+                            </td>
+                            <td class="text-info">
+                                @Html.DisplayFor(modelItem => item.LinkUrl)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AnchorText)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SearchEngine)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Notes)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LinkStatus)
+                            </td>
+                            <td>
+                                <a asp-controller="Disavows" asp-action="Edit" data-target="#modal-container" asp-route-id="@item.ID" data-toggle="modal" class="edit-post"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>*@
         </table>
     </div>
 </form>

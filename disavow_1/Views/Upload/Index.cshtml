@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Upload";
+}
+
+<h2>Upload</h2>
+
+<form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
+    <div class="row">
+        <div class="col-md-4">
+            <input type="file" name="files" class="form-control" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8" style="padding-top:10px;">
+            <div class="col-md-10">
+                <input type="submit" value="Upload">
+            </div>
+        </div>
+    </div>
+    <br />
+    <div id="dvData"></div>
+</form>

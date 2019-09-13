@@ -68,3 +68,4 @@ C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.Views.pdb
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.dll
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.pdb
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.csproj.CopyComplete
+C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\Razor\Views\Upload\Index.g.cshtml.cs
