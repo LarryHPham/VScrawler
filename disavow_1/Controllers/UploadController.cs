@@ -28,17 +28,15 @@ namespace disavow_1.Controllers
         }
 
         [HttpPost("UploadFiles")]
-        public async Task<IActionResult> Post(List<Models.IFormFile> files)
+        public async Task<IActionResult> Post(List<IFormFile> files)
         {
             long size = files.Sum(f => f.Length);
-
+            // TODO: some reason no files coming through
+            
             // full path to file in temp location
             var filePath = Path.GetTempFileName();
 
-            // TODO: some reason no files coming through
-            Console.WriteLine(files.Count());
-
-            foreach (Models.IFormFile file in files)
+            foreach (IFormFile file in files)
             {
                 if (file.Length > 0 && file.ContentType == "xlsx")
                 {
@@ -48,15 +46,12 @@ namespace disavow_1.Controllers
 
                         XmlDocument document = new XmlDocument();
                         document.Load(filePath);
-                        Console.WriteLine("===============");
-                        Console.WriteLine(document);
-                        Console.WriteLine("===============");
                     }
                 }
             }
 
 
-            return Ok(new { count = files.Count, size });
+            return Ok(new { count = files.Count, size, filePath });
         }
 
     }
