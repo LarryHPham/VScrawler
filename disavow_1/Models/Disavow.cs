@@ -13,4 +13,11 @@ namespace disavow_1.Models
         public bool NoFollowNoLink { get; set; }
         public bool Parsed { get; set; }
     }
+
+    public class UserInfo
+    {
+        public string UserName { get; set; }
+
+        public string Age { get; set; }
+    }
 }

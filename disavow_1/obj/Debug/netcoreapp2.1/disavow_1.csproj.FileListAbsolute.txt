@@ -40,7 +40,6 @@ C:\GitHub\VScrawler\disavow_1\bin\Debug\netcoreapp2.1\disavow_1.dll
 C:\GitHub\VScrawler\disavow_1\bin\Debug\netcoreapp2.1\disavow_1.pdb
 C:\GitHub\VScrawler\disavow_1\bin\Debug\netcoreapp2.1\disavow_1.Views.dll
 C:\GitHub\VScrawler\disavow_1\bin\Debug\netcoreapp2.1\disavow_1.Views.pdb
-C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.csprojAssemblyReference.cache
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.csproj.CoreCompileInputs.cache
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.RazorAssemblyInfo.cache
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.RazorAssemblyInfo.cs
@@ -60,6 +59,7 @@ C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\Razor\Views\Upload\Index.g.cshtml.cs
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.RazorTargetAssemblyInfo.cache
@@ -68,4 +68,4 @@ C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.Views.pdb
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.dll
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.pdb
 C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.csproj.CopyComplete
-C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\Razor\Views\Upload\Index.g.cshtml.cs
+C:\GitHub\VScrawler\disavow_1\obj\Debug\netcoreapp2.1\disavow_1.csprojAssemblyReference.cache
